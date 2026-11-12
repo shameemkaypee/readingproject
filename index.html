@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Try the Reading Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;900&family=Noto+Sans+Kannada&family=Noto+Sans+Telugu&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg:#fff;--card:#fff;--soft:#f5f6f8;--ink:#1d1f24;--mut:#6b7280;--line:#e4e6ea;--go:#1fb35f;--gob:#12894a;--c:#6c5ce7;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 17px/1.55 Nunito,system-ui,sans-serif;min-height:100vh}
+#app{max-width:640px;margin:0 auto;padding:18px 18px 40px}
+h1{font-size:clamp(34px,8vw,48px);line-height:1.05;margin:26px 0 12px;font-weight:900;letter-spacing:-.02em}
+h2{font-size:26px;line-height:1.2;margin:8px 0 10px;font-weight:900}
+p{margin:0 0 14px;max-width:60ch}
+.mut{color:var(--mut)}
+.mods{display:grid;gap:14px;margin-top:22px}
+.mod{display:flex;gap:16px;align-items:center;text-align:left;width:100%;background:var(--card);border:2px solid var(--line);border-bottom-width:5px;border-radius:20px;padding:14px;color:inherit;font:inherit;cursor:pointer}
+.mod:hover,.mod:focus-visible{border-color:var(--c)}
+.cov{flex:none;width:76px;height:76px;border-radius:16px;background:var(--c);color:#fff;display:grid;place-items:center;font:900 30px 'Noto Sans Kannada',Nunito,sans-serif}
+.mod b{display:block;font-size:19px;line-height:1.25}.mod small{color:var(--mut);font-size:14px}
+.done{color:var(--go);font-weight:900}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.x{background:none;border:0;font-size:26px;color:var(--mut);cursor:pointer;padding:4px 8px}
+.bar{flex:1;height:12px;background:var(--line);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--c);border-radius:9px;transition:width .35s}
+.glyph{font:900 64px/1 'Noto Sans Kannada',Nunito,sans-serif;color:var(--c);margin:10px 0 16px}
+.btn{display:block;width:100%;margin-top:26px;padding:15px;border:0;border-bottom:5px solid var(--gob);border-radius:16px;background:var(--go);color:#fff;font:900 18px Nunito,sans-serif;cursor:pointer}
+.btn:disabled{background:var(--line);border-bottom-color:var(--mut);color:var(--mut);cursor:not-allowed}
+.opt{display:block;width:100%;margin:0 0 10px;padding:14px 16px;text-align:left;background:var(--card);color:inherit;border:2px solid var(--line);border-bottom-width:5px;border-radius:16px;font:700 17px Nunito,sans-serif;cursor:pointer}
+.opt.on{border-color:var(--c);background:color-mix(in srgb,var(--c) 14%,var(--card))}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;background:var(--card);border:2px solid var(--line);border-radius:20px;padding:12px}
+.cell{aspect-ratio:1.15;background:none;border:0;border-radius:12px;color:var(--ink);font:700 34px Nunito,sans-serif;cursor:pointer;display:grid;place-items:center;padding:0}
+.cell:hover{background:var(--bg)}.cell.bad{background:#e8505b55}
+.cell.te{font-family:'Noto Sans Telugu',sans-serif}
+.w .cell{font-size:clamp(13px,3.6vw,19px);letter-spacing:.02em}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pair .cell{aspect-ratio:1;font:900 90px 'Noto Sans Kannada',sans-serif;background:var(--card);border:2px solid var(--line);border-bottom-width:5px;border-radius:20px}
+.pair .cell:hover{border-color:var(--c)}
+.cnt{margin:0 0 10px;color:var(--mut);font-weight:700}
+.stat{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;margin:0 0 14px;display:flex;gap:18px}
+.stat div{flex:1}.stat b{display:block;font-size:30px;font-weight:900;color:var(--c)}
+.src{font-size:14px;color:var(--mut);margin-top:24px}
+@media(prefers-reduced-motion:reduce){.bar i{transition:none}}
+body{font-size:18px}
+#app{max-width:1040px;padding:20px 28px 130px}
+#app.homepage{padding-bottom:50px}
+.homepage>h1,.homepage>p{max-width:720px}
+h1{font-size:clamp(34px,4.6vw,56px)}
+h2{font-size:clamp(26px,2.6vw,34px)}
+.lesson>*{max-width:720px;margin-left:auto;margin-right:auto}
+.lesson>.top{max-width:none}
+.top{margin-bottom:clamp(18px,5vh,44px)}
+.grid{background:var(--soft);max-width:640px;gap:10px;padding:14px}
+.cell{aspect-ratio:auto;height:clamp(58px,11vh,96px)}
+.cell:hover{background:#fff}
+.pair{max-width:560px}
+.pair .cell{height:clamp(150px,30vh,260px);font-size:clamp(80px,16vh,140px)}
+.w .cell{font-size:clamp(13px,2.4vw,24px)}
+.stat{background:var(--soft)}
+.foot{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:2px solid var(--line);padding:14px 28px calc(14px + env(safe-area-inset-bottom,0px));display:flex;justify-content:flex-end}
+.foot .btn{width:auto;min-width:220px;margin:0}
+.cov{font-size:32px;white-space:nowrap;letter-spacing:-.02em;overflow:hidden}
+.cov svg{width:46px;height:46px}
+.cov.big{width:96px;height:96px;border-radius:24px}
+.cov.big svg{width:64px;height:64px}
+@media(min-width:860px){.mods{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){#app{padding:16px 16px 120px}.foot{padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px))}.foot .btn{width:100%}}
+</style></head><body><div id="app"></div>
+<script>
+const S={k:null,r:{}},D={};let cm=-1,si=0,ok=false;
+const sh=a=>a.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+const av=a=>a&&a.length?a.reduce((x,y)=>x+y,0)/a.length/1000:0;
+const mk=(p,c,cls)=>p.map(([t,d])=>({t,d,c,cls}));
+const $=s=>document.querySelector(s);
+const cmp=(a,b,la,lb,pa,pb)=>`<div class="stat"><div><b>${a.toFixed(2)}s</b>${la}</div><div><b>${b.toFixed(2)}s</b>${lb}</div></div>`;
+
+const M=[
+{n:'Which way is up?',g:'ದ',c:'#e8803a',sub:'Based on “Children learn letter shapes before letter names” (Das et al., 2025)',steps:[
+ {t:'text',h:'Can you know a letter without knowing its name?',p:['You do it all the time with signboards and packaging. This study asked whether small children do it with letters, before school teaches them.','The lab tested 300 children in Karnataka who were just starting to read Kannada. You’re about to do the first task they did.']},
+ {t:'choice',h:'Do you read Kannada?',key:'k',o:[['y','Yes'],['n','No, never learned it']]},
+ {t:'game',kind:'fam',id:'fam',h:'Which one have you seen more often?',p:'One of the two letters is flipped upside down. Tap the one that looks right.',L:['ದ','ಬ','ವ','ನ','ಮ','ರ']},
+ {t:'res',fn:()=>{const n=S.r.fam,me=S.k==='y'?'You read Kannada, so these shapes are everyday sights for you. Most of the children hadn’t learned to read it yet.':'You don’t read Kannada, so you had no reading skill to lean on. Shapes still feel “right way up” from years of seeing print.';return `<div class="glyph">${n} of 6</div><h2>That’s your score</h2><p>${me}</p><p class="mut">A caution: several of these letters share a line across the top, which is an easy clue. The researchers checked for this and the children still did well on letters without it.</p>`}},
+ {t:'text',h:'What the children did',p:['On average the children picked the right orientation 89% of the time.','Then came the surprise. Children who could name fewer than half the letters still scored around 80%. On the exact letters they couldn’t name, many scored over 90%.','They also searched faster for upright letters than flipped ones, and that speed-up was linked to knowing the shapes, not to knowing the names.']},
+ {t:'text',h:'Why this matters',p:['Teachers often count “letter knowledge” as naming letters. This work suggests there’s an earlier step: just recognising what a letter looks like, probably from print around the child.','Still early days. The study didn’t measure reading itself, so it can’t yet say that shape familiarity helps children learn to read.']}]},
+
+{n:'Why familiar letters pop out',g:'ల',c:'#6c5ce7',sub:'Based on “Reading increases the compositionality of visual word representations” (Agrawal et al., 2019)',steps:[
+ {t:'text',h:'Does reading change how letters look to you?',p:['Telugu and Malayalam have different scripts but share most sounds. That let the lab compare people who read one script with people who read the other, with everything else about them similar.','So the same letters were “known” for one group and “unknown” for the other. Try both kinds yourself.']},
+ {t:'game',kind:'search',id:'s2',h:'Find the odd one out',p:'Tap the letter that doesn’t match the others. Be quick, but get it right. Some rounds are English, some are Telugu.',rounds:[...mk([['F','E'],['Q','O'],['N','M'],['R','P']],'a'),...mk([['భ','బ'],['థ','త'],['ల','మ'],['ణ','న']],'b','te')]},
+ {t:'res',fn:()=>{const a=av(S.r.s2.a),b=av(S.r.s2.b);const t=a<b?'You were faster on English letters. That’s the pattern the researchers saw: letters you’ve read thousands of times are easier to tell apart.':'You were faster on the Telugu letters. Maybe you read Telugu, or maybe it’s just noise, because four rounds is a very small test.';return `<h2>Your times</h2>${cmp(a,b,'English letters','Telugu letters')}<p>${t}</p>`}},
+ {t:'text',h:'What the lab found',p:['Readers searched faster in their own script, and not just for single letters. For pairs of letters too.','The key part: in readers, the two letters in a pair interfered with each other less. Think of each letter keeping its own signal clean.','In a brain scan, a region called the lateral occipital cortex predicted a pair’s response better from its single letters in readers than in non-readers.']},
+ {t:'text',h:'The big idea',p:['Scientists call this compositionality: the brain’s response to a whole is just the parts added up.','The old theory said reading builds special detectors for common letter pairs, like TH. This study found no sign of that. Reading seems to sharpen the letters and keep them from blurring together.']}]},
+
+{n:'Flip it and see if you slow down',g:'AT',c:'#0b95a8',sub:'Based on “Letter processing in upright bigrams predicts reading fluency variations in children” (Agrawal et al., 2022)',steps:[
+ {t:'text',h:'Can a visual game say something about reading?',p:['The lab asked 68 children in grades 3 to 5 to read words and a short passage aloud, name digits quickly, and play a search game just like the one you’re about to try.','The twist: some of the letter pairs were turned upside down.']},
+ {t:'game',kind:'search',id:'s3',h:'Find the odd pair',p:'Tap the pair that’s different from the rest. Some pairs are the right way up and some are flipped.',rounds:[...mk([['AT','TA'],['LS','SL'],['RT','TR'],['VA','AV']],'a'),...mk([['AT','TA'],['LS','SL'],['RT','TR'],['VA','AV']],'b','inv')].map(r=>r)},
+ {t:'res',fn:()=>{const a=av(S.r.s3.a),b=av(S.r.s3.b);const t=a<b?'Faster upright, which is what almost everyone shows. Years of reading have tuned your eyes to the normal direction.':'You were as fast or faster flipped. That happens with only four rounds each, so don’t read too much into it.';return `<h2>Your times</h2>${cmp(a,b,'Upright','Flipped')}<p>${t}</p>`}},
+ {t:'text',h:'What they found',p:['Children who searched faster on upright pairs tended to read more fluently. Flipped pairs showed no clear link.','That link held up even after accounting for how fast they named digits, how fast they pressed keys, and how accurate they were. Only naming speed and upright pair search had their own link to reading.','It was also specific to normal letter spacing. Spread the letters far apart and the link disappeared.']},
+ {t:'text',h:'Careful with this one',p:['It’s a correlation. It can’t tell us whether better visual processing leads to better reading, or reading practice leads to better visual processing.','The authors say a long study that starts before children can read is the way to find out.']}]},
+
+{n:'Can you read “ELPEHANT”?',g:'OFR',c:'#d9467a',sub:'Based on “A compositional neural code in high-level visual cortex can explain jumbled word reading” (Agrawal et al., 2020)',steps:[
+ {t:'text',h:'Why can you still read a scrambled word?',p:['You’ve probably seen the meme where jumbled words are still readable. But some jumbles are easier than others, and nobody had a clear reason why.','The lab’s idea: it’s mostly about how similar the jumble looks to the real word. Let’s test it.']},
+ {t:'game',kind:'search',id:'s4',w:1,h:'Find the odd word',p:'One word is a jumbled version of the rest. Tap it. Some jumbles swap letters in the middle, some at the edges.',rounds:[...mk([['FOGRET','FORGET'],['PENICL','PENCIL'],['PLAENT','PLANET'],['TEAOPT','TEAPOT']],'a'),...mk([['OFRGET','FORGET'],['EPNCIL','PENCIL'],['LPANET','PLANET'],['ETAPOT','TEAPOT']],'b')]},
+ {t:'res',fn:()=>{const a=av(S.r.s4.a),b=av(S.r.s4.b);const t=a>b?'Middle swaps took you longer. That means they look more like the real word, which is exactly why they’re easier to read.':'Your times didn’t split this way. With four rounds each the result can easily go either way.';return `<h2>Your times</h2>${cmp(a,b,'Middle swapped','Edges swapped')}<p>${t}</p>`}},
+ {t:'text',h:'How they explained it',p:['Hard to spot in a search means similar to the real word, and that makes it easy to read. PLAENT looks a lot like PLANET, because only middle letters moved. LPANET doesn’t, because the first letter moved.','The lab built a model of neurons that each respond to single letters. A word’s response is just those letter responses added up. It predicted how people searched and how fast they decided whether a string was a real word.']},
+ {t:'text',h:'Where it happens in the brain',p:['Brain scans pointed to the lateral occipital cortex as the place where this letter-by-letter code lives. Later areas then compare it with words you already know.','So reading words isn’t magic whole-word recognition. It leans on a plain visual code for letters, and a good memory for words.']}]}
+];
+
+const sq=(()=>{let s='';for(let r=0;r<3;r++)for(let c=0;c<3;c++){const o=r==0&&c==2;s+=`<rect x="${6+c*13}" y="${6+r*13}" width="10" height="10" rx="3" fill="#fff" opacity="${o?1:.4}"/>`}return s})();
+const V=b=>`<svg viewBox="0 0 48 48" aria-hidden="true">${b}</svg>`;
+const IC=[V(`<text x="24" y="21" text-anchor="middle" font-size="22" font-weight="900" fill="#fff" font-family="Noto Sans Kannada,sans-serif">ದ</text><path d="M5 25h38" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/><text x="24" y="21" text-anchor="middle" font-size="22" font-weight="900" fill="#fff" opacity=".6" font-family="Noto Sans Kannada,sans-serif" transform="translate(0,50) scale(1,-1)">ದ</text>`),V(sq),V(`<circle cx="24" cy="28" r="15" fill="none" stroke="#fff" stroke-width="3"/><path d="M24 28V19M19 8h10M24 8v5" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"/>`),V(`<path d="M25 25C25 13 39 13 39 24M36 21l3 3 3-3" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><g fill="#fff" font-size="11" font-weight="900" text-anchor="middle" font-family="Nunito,sans-serif"><rect x="4" y="28" width="12" height="14" rx="3" opacity=".3"/><rect x="18" y="28" width="12" height="14" rx="3" opacity=".3"/><rect x="32" y="28" width="12" height="14" rx="3" opacity=".3"/><text x="10" y="39">F</text><text x="24" y="39">R</text><text x="38" y="39">O</text></g>`)];
+function home(){cm=-1;$('#app').className='homepage';$('#app').innerHTML=`<h1>Try the experiments before you read about them.</h1><p class="mut">Four studies from the Vision Lab at IISc on how children learn to read. Each one starts with a short game, then shows what it means and what the researchers found.</p><div class="mods">${M.map((m,i)=>`<button class="mod" style="--c:${m.c}" onclick="open_(${i})"><span class="cov">${IC[i]}</span><span><b>${m.n}</b><small>${m.sub}${D[i]?' <span class="done">Done</span>':''}</small></span></button>`).join('')}</div><p class="src">Concept Design by Shameem for the Vision Lab Reading Project</p>`;scrollTo(0,0)}
+function open_(i){cm=i;si=0;step()}
+function step(){const m=M[cm],s=m.steps[si];ok=false;let h='';
+ const top=`<div class="top"><button class="x" onclick="home()" aria-label="Close">✕</button><div class="bar"><i style="width:${si/m.steps.length*100}%"></i></div></div>`;
+ if(s.t==='text')h=(si===0?`<span class="cov big" style="margin:6px 0 18px">${IC[cm]}</span>`:'')+`<h2>${s.h}</h2>`+s.p.map(x=>`<p>${x}</p>`).join('');
+ if(s.t==='choice')h=`<h2>${s.h}</h2>`+s.o.map(o=>`<button class="opt" data-v="${o[0]}">${o[1]}</button>`).join('');
+ if(s.t==='game')h=`<h2>${s.h}</h2><p class="mut">${s.p}</p><div id="g"></div>`;
+ if(s.t==='res')h=s.fn();
+ $('#app').style.setProperty('--c',m.c);$('#app').className='lesson';$('#app').innerHTML=top+h+`<div class="foot"><button class="btn" id="nx">${si===m.steps.length-1?'Finish':'Continue'}</button></div>`;
+ const nx=$('#nx');nx.onclick=()=>{if(si===m.steps.length-1){D[cm]=1;home()}else{si++;step();scrollTo(0,0)}};
+ const on=()=>{nx.disabled=false};
+ if(s.t==='text'||s.t==='res')on();else nx.disabled=true;
+ if(s.t==='choice')document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{S[s.key]=b.dataset.v;document.querySelectorAll('.opt').forEach(x=>x.classList.remove('on'));b.classList.add('on');on()});
+ if(s.t==='game')s.kind==='fam'?fam(s,on):search(s,on)}
+function fam(s,on){const L=sh(s.L);let i=0,n=0;(function nx(){if(i>=L.length){S.r.fam=n;on();$('#g').innerHTML='<p><b>All done. Tap Continue.</b></p>';return}
+ const f=Math.random()<.5;const l=L[i];const a=`<button class="cell" data-u="1">${l}</button>`,b=`<button class="cell" data-u="0" style="transform:scaleY(-1)">${l}</button>`;
+ $('#g').innerHTML=`<div class="cnt">${i+1} of ${L.length}</div><div class="pair">${f?a+b:b+a}</div>`;
+ document.querySelectorAll('#g .cell').forEach(c=>c.onclick=()=>{if(c.dataset.u==='1')n++;i++;nx()})})()}
+function search(s,on){const R=sh(s.rounds);let i=0;S.r[s.id]={};(function nx(){if(i>=R.length){on();$('#g').innerHTML='<p><b>All done. Tap Continue.</b></p>';return}
+ const r=R[i],odd=Math.floor(Math.random()*16);let c='';
+ for(let k=0;k<16;k++){const x=Math.round(Math.random()*10-5),y=Math.round(Math.random()*10-5);c+=`<button class="cell ${r.cls==='te'?'te':''}" data-o="${k===odd?1:0}"><span style="display:block;transform:translate(${x}px,${y}px)${r.cls==='inv'?' scaleY(-1)':''}">${k===odd?r.t:r.d}</span></button>`}
+ $('#g').innerHTML=`<div class="cnt">Round ${i+1} of ${R.length}</div><div class="grid ${s.w?'w':''}">${c}</div>`;
+ const t0=performance.now();
+ document.querySelectorAll('#g .cell').forEach(b=>b.onclick=()=>{if(b.dataset.o==='1'){(S.r[s.id][r.c]=S.r[s.id][r.c]||[]).push(performance.now()-t0);i++;nx()}else{b.classList.add('bad');setTimeout(()=>b.classList.remove('bad'),300)}})})()}
+home();
+</script></body></html>
